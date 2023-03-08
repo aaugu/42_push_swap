@@ -14,7 +14,7 @@ SRCS = $(addprefix ./src/, $(SRCS_FILES))
 OBJS = $(SRCS:%.c=%.o)
 
 %.o : %.c
-	$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
+			$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 
 all:		$(NAME)
 
@@ -23,12 +23,12 @@ $(NAME):	$(LIBFT) $(OBJS)
 			$(CC) $(FLAGS) $(LIB) $(OBJS) -o $(NAME)
 			@echo " [ OK ] | push_swap ready!"
 
-$(LIBFT):	
+$(LIBFT):
 			@echo " [ .. ] | Compiling libft.."
 			@make -s -C libft
 			@echo " [ OK ] | Libft ready!"
 
-clean:		
+clean:
 			@echo " [ .. ] | Cleaning objects.."
 			@make -s -C libft clean
 			@($(RM) $(OBJS))
