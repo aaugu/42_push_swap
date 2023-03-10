@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:55:09 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 10:22:46 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/10 10:48:58 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**ft_strs_copy(const char **src, int size)
 		dest[i] = ft_strdup(src[i]);
 		if (!dest[i++])
 		{
-			ft_free_dptr(dest, size);
+			ft_strs_free(dest, size);
 			return (NULL);
 		}
 	}

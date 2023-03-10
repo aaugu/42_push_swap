@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 10:30:39 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/10 13:48:19 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,25 @@
 
 typedef struct s_game
 {
-	t_list	pile_a;
-	t_list	pile_b;
+	t_list	*stack_a;
+	t_list	*stack_b;
 	char	**list;
-	int		list_size;
+	int		l_size;
 	int		size_a;
 	int		size_b;
 	int		min;
 	int		max;
 }			t_game;
 
-char	**get_args(char **input, int nb);
+char	**get_args(char **argv, int argc);
 char	**parse_args(char **input);
+
+t_bool	is_list_valid(t_game *game);
+t_bool	only_num(char **list, int size);
+t_bool	is_num(char *str);
+t_bool	no_duplicate_num(char **list, int size);
+
+void	delete_content(void *content);
+void	clear_game(t_game *game);
 
 #endif

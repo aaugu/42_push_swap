@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 12:03:34 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 10:23:13 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/10 10:47:33 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <string.h>
 # include <strings.h>
 # include <unistd.h>
+
+typedef int	t_bool;
 
 /* ---------------	LISTS	--------------- */
 typedef struct s_list

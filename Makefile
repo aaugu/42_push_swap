@@ -9,7 +9,8 @@ LIBFT = libft/libft.a
 RM = rm -f
 
 SRCS_FILES = 	main.c \
-				get_args.c
+				get_args.c \
+				check_list.c
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
 OBJS = $(SRCS:%.c=%.o)
