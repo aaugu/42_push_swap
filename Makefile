@@ -8,7 +8,8 @@ LIBFT = libft/libft.a
 
 RM = rm -f
 
-SRCS_FILES = 	push_swap.c \
+SRCS_FILES = 	main.c \
+				get_args.c
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
 OBJS = $(SRCS:%.c=%.o)

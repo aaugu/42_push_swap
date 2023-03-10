@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 10:30:39 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/10 10:31:33 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../include/push_swap.h"
 
-# include "../libft/include/libft.h"
-
-typedef struct s_game
+int	main(int argc, char **argv)
 {
-	t_list	pile_a;
-	t_list	pile_b;
-	char	**list;
-	int		list_size;
-	int		size_a;
-	int		size_b;
-	int		min;
-	int		max;
-}			t_game;
+	t_game	*game;
 
-char	**get_args(char **input, int nb);
-char	**parse_args(char **input);
+	game = (t_game *)malloc(sizeof(t_game));
+	game->list = retrieve_args(argv, argc);
+	if (!game->list)
+	{
+		free(game);
+		return (0);
+	}
 
-#endif
+	free(game);
+	return (0);
+}

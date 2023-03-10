@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strs_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/06 11:53:33 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/10 08:32:12 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/10 10:23:02 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/libft.h"
 
-int	main(void)
+int	ft_strs_len(char **strs)
 {
-	ft_printf("Hello World!");
-	return (0);
+	int	i;
+
+	i = 0;
+	while (strs[i])
+		i++;
+	return (i);
 }
