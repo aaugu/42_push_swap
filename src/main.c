@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 23:40:51 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/11 00:10:33 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	if (!is_list_valid(game))
 		clear_game(game);
 	game_init(game);
+	ft_printf("min : %d, max : %d\n", game->min, game->max);
 	// sort_list(game);
 	clear_game(game);
 	return (0);

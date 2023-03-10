@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 23:35:45 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/11 00:09:02 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ t_bool	no_duplicate_num(char **list, int size);
 /* ---------------	SOLVER	--------------- */
 void	game_init(t_game *game);
 void	create_stack_a(t_game *game);
+int		get_min(int *list, int size);
+int		get_max(int *list, int size);
 
-/* ---------------	ENDGAME UTILS	--------------- */
-void	clear_game(t_game *game);
+	/* ---------------	ENDGAME UTILS	--------------- */
+	void clear_game(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/11 00:03:16 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/11 00:14:23 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	create_stack_a(t_game *game)
 	if (!game->stack_a)
 		return ;
 	i = 0;
-	while (i < (game->size - 1))
+	while (i < (game->size))
 	{
 		game->stack_a[i] = ft_atoi(game->list[i]);
 		i++;
@@ -45,7 +45,7 @@ int	get_min(int	*list, int size)
 
 	min = list[0];
 	i = 1;
-	while (i < size - 1)
+	while (i < size)
 	{
 		if (list[i] < min)
 			min = list[i];
@@ -61,7 +61,7 @@ int	get_max(int	*list, int size)
 
 	max = list[0];
 	i = 1;
-	while (i < size - 1)
+	while (i < size)
 	{
 		if (list[i] > max)
 			max = list[i];
