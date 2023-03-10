@@ -12,7 +12,6 @@ SRCS_FILES = 	main.c \
 				get_args.c \
 				list_checks.c \
 				game_init.c \
-				lists_utils.c
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
 OBJS = $(SRCS:%.c=%.o)
@@ -24,7 +23,7 @@ all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(OBJS)
 			@echo " [ .. ] | Compiling push_swap.."
-			$(CC) $(FLAGS) $(LIB) $(OBJS) -o $(NAME)
+			$(CC) $(FLAGS) $(OBJS) $(LIB) -o $(NAME)
 			@echo " [ OK ] | push_swap ready!"
 
 $(LIBFT):

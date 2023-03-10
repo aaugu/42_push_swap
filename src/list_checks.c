@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_list.c                                       :+:      :+:    :+:   */
+/*   list_checks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 10:51:43 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 13:53:37 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/10 23:18:19 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/10 23:40:34 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 t_bool	is_list_valid(t_game *game)
 {
-	game->l_size = ft_strs_len(game->list);
-	if (!game->l_size)
+	game->size = ft_strs_len(game->list);
+	if (!game->size)
 	{
 		ft_printf("Error\nList empty.\n");
 		return (0);
 	}
-	if (!only_num(game->list, game->l_size))
+	if (!only_num(game->list, game->size))
 	{
 		ft_printf("Error\nNon numeric parameter in the list.\n");
 		return (0);
 	}
-	if (!no_duplicate_num(game->list, game->l_size))
+	if (!no_duplicate_num(game->list, game->size))
 	{
 		ft_printf("Error\nList has duplicates.\n");
 		return (0);

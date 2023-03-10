@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 15:15:36 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/10 23:40:51 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		return (0);
+	game->stack_a = NULL;
+	game->stack_b = NULL;
 	game->list = get_args(argv, argc);
 	if (!game->list)
 		clear_game(game);
@@ -33,11 +35,11 @@ int	main(int argc, char **argv)
 void	clear_game(t_game *game)
 {
 	if (game->list)
-		ft_strs_free(game->list, game->l_size);
+		ft_strs_free(game->list, game->size);
 	if (game->stack_a)
-		lstclear(game->stack_a);
+		free(game->stack_a);
 	if (game->stack_b)
-		lstclear(game->stack_a);
+		free(game->stack_a);
 	free(game);
 	ft_printf("Thanks for trying push_swap");
 	exit(0);

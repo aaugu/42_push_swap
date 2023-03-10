@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 15:15:14 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/11 00:03:16 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,58 @@
 
 void	game_init(t_game *game)
 {
-	// get_min(game);
-	// get_max(game);
 	create_stack_a(game);
-	if (!*(game->stack_a))
+	if (!game->stack_a)
 		return ;
+	game->size_a = game->size;
+	game->size_b = 0;
+	game->min = get_min(game->stack_a, game->size);
+	game->max = get_max(game->stack_a, game->size);
 }
 
 void	create_stack_a(t_game *game)
 {
-	t_lstnb	*temp;
-	t_lstnb	*prev;
-	int		i;
+	int	i;
 
-	i = 1;
-	*(game->stack_a) = lstnew(ft_atoi(game->list[0]));
-	if (!*(game->stack_a))
+	game->stack_a = (int *)malloc(sizeof(int) * (game->size));
+	if (!game->stack_a)
 		return ;
-	prev = *(game->stack_a);
-	while (i < game->l_size)
+	i = 0;
+	while (i < (game->size - 1))
 	{
-		temp = lstnew(ft_atoi(game->list[i]));
-		if (!temp)
-			return ;
-		prev->next = temp;
-		prev = temp;
+		game->stack_a[i] = ft_atoi(game->list[i]);
 		i++;
 	}
+}
+
+int	get_min(int	*list, int size)
+{
+	int	i;
+	int	min;
+
+	min = list[0];
+	i = 1;
+	while (i < size - 1)
+	{
+		if (list[i] < min)
+			min = list[i];
+		i++;
+	}
+	return (min);
+}
+
+int	get_max(int	*list, int size)
+{
+	int i;
+	int max;
+
+	max = list[0];
+	i = 1;
+	while (i < size - 1)
+	{
+		if (list[i] > max)
+			max = list[i];
+		i++;
+	}
+	return (max);
 }

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 08:17:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 12:05:19 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/10 23:46:35 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**parse_args(char **input)
 	list = (char **)malloc(sizeof(char *) * (size));
 	if (!list)
 		return (NULL);
-	list[size] = NULL;
+	list[size - 1] = NULL;
 	i = 0;
 	j = 1;
 	while (j < size)
