@@ -10,7 +10,9 @@ RM = rm -f
 
 SRCS_FILES = 	main.c \
 				get_args.c \
-				check_list.c
+				list_checks.c \
+				game_init.c \
+				lists_utils.c
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
 OBJS = $(SRCS:%.c=%.o)

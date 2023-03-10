@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_init.c                                        :+:      :+:    :+:   */
+/*   lists_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 15:15:14 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/10 14:44:43 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/10 15:06:47 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	game_init(t_game *game)
+t_lstnb	*lstnew(int nb)
 {
-	// get_min(game);
-	// get_max(game);
-	create_stack_a(game);
-	if (!*(game->stack_a))
-		return ;
+	t_lstnb	*lstnew;
+
+	lstnew = (t_lstnb *)malloc(sizeof(t_lstnb));
+	if (!lstnew)
+		return (0);
+	lstnew->nb = nb;
+	lstnew->next = NULL;
+	return (lstnew);
 }
 
-void	create_stack_a(t_game *game)
+void	lstclear(t_lstnb **lst)
 {
 	t_lstnb	*temp;
-	t_lstnb	*prev;
-	int		i;
 
-	i = 1;
-	*(game->stack_a) = lstnew(ft_atoi(game->list[0]));
-	if (!*(game->stack_a))
+	if (!lst)
 		return ;
-	prev = *(game->stack_a);
-	while (i < game->l_size)
+	while (*lst)
 	{
-		temp = lstnew(ft_atoi(game->list[i]));
-		if (!temp)
-			return ;
-		prev->next = temp;
-		prev = temp;
-		i++;
+		temp = (*lst)->next;
+		free(lst);
+		*lst = temp;
 	}
 }
