@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/11 00:10:33 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 11:09:12 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_game	*game;
+	int	i;
 
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
@@ -27,8 +28,12 @@ int	main(int argc, char **argv)
 	if (!is_list_valid(game))
 		clear_game(game);
 	game_init(game);
-	ft_printf("min : %d, max : %d\n", game->min, game->max);
-	// sort_list(game);
+	push_b(&game->stack_a, &game->stack_b, game);
+	reverse_rotate(&game->stack_a, game->size_a, game);
+	reverse_rotate(&game->stack_a, game->size_a, game);
+	reverse_rotate(&game->stack_a, game->size_a, game);
+	push_a(&game->stack_a, &game->stack_b, game);
+	rotate(&game->stack_a, game->size_a, game);
 	clear_game(game);
 	return (0);
 }
@@ -40,7 +45,7 @@ void	clear_game(t_game *game)
 	if (game->stack_a)
 		free(game->stack_a);
 	if (game->stack_b)
-		free(game->stack_a);
+		free(game->stack_b);
 	free(game);
 	ft_printf("Thanks for trying push_swap");
 	exit(0);

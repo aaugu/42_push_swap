@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lists_utils.c                                      :+:      :+:    :+:   */
+/*   do_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:44:43 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 15:06:47 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/06 11:17:04 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/13 11:01:12 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_lstnb	*lstnew(int nb)
+void	swap(int **list, int size, t_game *game)
 {
-	t_lstnb	*lstnew;
+	int	*new_list;
+	int	i;
 
-	lstnew = (t_lstnb *)malloc(sizeof(t_lstnb));
-	if (!lstnew)
-		return (0);
-	lstnew->nb = nb;
-	lstnew->next = NULL;
-	return (lstnew);
-}
-
-void	lstclear(t_lstnb **lst)
-{
-	t_lstnb	*temp;
-
-	if (!lst)
+	new_list = (int *)malloc(sizeof(int) * size);
+	if (!new_list)
 		return ;
-	while (*lst)
+	new_list[0] = *list[1];
+	new_list[1] = *list[0];
+	i = 2;
+	while (i < size)
 	{
-		temp = (*lst)->next;
-		free(lst);
-		*lst = temp;
+		new_list[i] = *list[i];
+		i++;
 	}
+	free(*list);
+	*list = new_list;
+	if (list == &game->stack_a)
+		ft_printf("sa\n");
+	if (list == &game->stack_b)
+		ft_printf("sb\n");
 }

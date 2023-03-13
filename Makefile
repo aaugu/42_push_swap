@@ -12,6 +12,10 @@ SRCS_FILES = 	main.c \
 				get_args.c \
 				list_checks.c \
 				game_init.c \
+				do_push.c \
+				do_swap.c \
+				do_rotate.c \
+				do_reverse_rotate.c
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
 OBJS = $(SRCS:%.c=%.o)

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/11 00:09:02 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 10:41:26 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,25 @@ t_bool	only_num(char **list, int size);
 t_bool	is_num(char *str);
 t_bool	no_duplicate_num(char **list, int size);
 
-/* ---------------	SOLVER	--------------- */
+/* ---------------	GAME INIT	--------------- */
 void	game_init(t_game *game);
 void	create_stack_a(t_game *game);
 int		get_min(int *list, int size);
 int		get_max(int *list, int size);
 
-	/* ---------------	ENDGAME UTILS	--------------- */
-	void clear_game(t_game *game);
+/* ---------------	SOLVER	--------------- */
+
+/* ---------------	INSTRUCTIONS	--------------- */
+void	push_a(int **a, int **b, t_game *game);
+void	push_b(int **a, int **b, t_game *game);
+int		*add_up(int *src, int to_add, int size);
+int		*remove_up(int *list, int size);
+
+void	swap(int **list, int size, t_game *game);
+void	rotate(int **list, int size, t_game *game);
+void	reverse_rotate(int **list, int size, t_game *game);
+
+/* ---------------	ENDGAME UTILS	--------------- */
+void	clear_game(t_game *game);
 
 #endif

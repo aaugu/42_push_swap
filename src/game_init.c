@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/11 00:14:23 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 10:01:39 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	game_init(t_game *game)
 	create_stack_a(game);
 	if (!game->stack_a)
 		return ;
+	game->stack_b = NULL;
 	game->size_a = game->size;
 	game->size_b = 0;
 	game->min = get_min(game->stack_a, game->size);
@@ -56,8 +57,8 @@ int	get_min(int	*list, int size)
 
 int	get_max(int	*list, int size)
 {
-	int i;
-	int max;
+	int	i;
+	int	max;
 
 	max = list[0];
 	i = 1;
