@@ -6,13 +6,14 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:16:46 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 14:31:37 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 21:33:58 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push_a(int **a, int **b, t_game *game)
+void	push_a(int **src, int **dest, t_game *game)
+// void push_a(t_tower* a, t_tower* b)
 {
 	int	*new_a;
 	int	*new_b;

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 11:43:50 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 21:33:12 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,17 @@
 
 /* ---------------	TYPEDEF	--------------- */
 
+typedef struct s_tower
+{
+	int *stack;
+	int size;
+} t_tower;
+
 typedef struct s_game
 {
 	char	**list;
+	t_tower stack_a;
+	t_tower stack_b;
 	int		*stack_a;
 	int		*stack_b;
 	int		size;
