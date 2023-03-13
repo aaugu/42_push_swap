@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 13:47:18 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 14:45:34 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	main(int argc, char **argv)
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		return (0);
-	game->stack_a = NULL;
-	game->stack_b = NULL;
 	game->list = get_args(argv, argc);
 	if (!game->list)
 		game_clear(game);
