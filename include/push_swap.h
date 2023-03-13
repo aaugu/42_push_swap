@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 10:41:26 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 11:43:50 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int		get_min(int *list, int size);
 int		get_max(int *list, int size);
 
 /* ---------------	SOLVER	--------------- */
+void	game_solve(int **stack_a, int **stack_b, t_game *game);
+t_bool	is_stack_ordered(int *stack, int size);
 
 /* ---------------	INSTRUCTIONS	--------------- */
 void	push_a(int **a, int **b, t_game *game);
@@ -58,6 +60,6 @@ void	rotate(int **list, int size, t_game *game);
 void	reverse_rotate(int **list, int size, t_game *game);
 
 /* ---------------	ENDGAME UTILS	--------------- */
-void	clear_game(t_game *game);
+void	game_clear(t_game *game);
 
 #endif

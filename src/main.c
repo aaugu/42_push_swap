@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 11:10:35 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 13:47:18 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,11 @@ int	main(int argc, char **argv)
 	game->stack_b = NULL;
 	game->list = get_args(argv, argc);
 	if (!game->list)
-		clear_game(game);
+		game_clear(game);
 	if (!is_list_valid(game))
-		clear_game(game);
+		game_clear(game);
 	game_init(game);
-	clear_game(game);
+	game_solve(&game->stack_a, &game->stack_b, game);
+	game_clear(game);
 	return (0);
-}
-
-void	clear_game(t_game *game)
-{
-	if (game->list)
-		ft_strs_free(game->list, game->size);
-	if (game->stack_a)
-		free(game->stack_a);
-	if (game->stack_b)
-		free(game->stack_b);
-	free(game);
-	ft_printf("Thanks for trying push_swap");
-	exit(0);
 }

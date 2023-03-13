@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:16:46 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 10:56:08 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 14:31:37 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,22 @@ void	push_a(int **a, int **b, t_game *game)
 	int	*new_a;
 	int	*new_b;
 
-	game->size_a++;
-	game->size_b--;
-	new_a = add_up(*a, (*b)[0], game->size_a);
-	if (!new_a)
-		return ;
-	new_b = remove_up(*b, game->size_b);
-	if (!new_b)
-		return ;
-	free(*a);
-	*a = new_a;
-	free(*b);
-	*b = new_b;
-	ft_printf("pa\n");
+	if (game->size_b > 0)
+	{
+		game->size_a++;
+		game->size_b--;
+		new_a = add_up(*a, (*b)[0], game->size_a);
+		if (!new_a)
+			return ;
+		new_b = remove_up(*b, game->size_b);
+		if (!new_b)
+			return ;
+		free(*a);
+		*a = new_a;
+		free(*b);
+		*b = new_b;
+		ft_printf("pa\n");
+	}
 }
 
 void	push_b(int **a, int **b, t_game *game)
@@ -37,19 +40,22 @@ void	push_b(int **a, int **b, t_game *game)
 	int	*new_a;
 	int	*new_b;
 
-	game->size_a--;
-	game->size_b++;
-	new_a = remove_up(*a, game->size_a);
-	if (!new_a)
-		return ;
-	new_b = add_up(*b, (*a)[0], game->size_b);
-	if (!new_b)
-		return ;
-	free(*a);
-	*a = new_a;
-	free(*b);
-	*b = new_b;
-	ft_printf("pb\n");
+	if (game->size_a > 0)
+	{
+		game->size_a--;
+		game->size_b++;
+		new_a = remove_up(*a, game->size_a);
+		if (!new_a)
+			return ;
+		new_b = add_up(*b, (*a)[0], game->size_b);
+		if (!new_b)
+			return ;
+		free(*a);
+		*a = new_a;
+		free(*b);
+		*b = new_b;
+		ft_printf("pb\n");
+	}
 }
 
 int	*add_up(int *src, int to_add, int size)

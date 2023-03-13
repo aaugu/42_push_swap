@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 10:01:39 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/13 13:38:38 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	game_init(t_game *game)
 	create_stack_a(game);
 	if (!game->stack_a)
 		return ;
-	game->stack_b = NULL;
+	game->stack_b = (int *)malloc(sizeof(int));
+	if (!game->stack_b)
+		return ;
+	game->stack_b[0] = 0;
 	game->size_a = game->size;
 	game->size_b = 0;
 	game->min = get_min(game->stack_a, game->size);
