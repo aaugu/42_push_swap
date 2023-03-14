@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 11:13:50 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 14:07:44 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 int	game_init(t_game game)
 {
+	game.a.content = NULL;
+	game.b.content = NULL;
 	if (!create_stack(game.a, game.list, game.size, game.size))
-		return (-1);
+		return (0);
 	if (!create_stack(game.b, game.list, game.size, 0))
-		return (-1);
-	get_min(game.a.content, game.size, &game.min, &game.max);
+		return (0);
+	get_min_max(game.a.content, game.size, &game.min, &game.max);
+	return (1);
 }
 
 int	create_stack(t_stack stack, char **list, int l_size, int s_size)
@@ -41,20 +44,16 @@ int	create_stack(t_stack stack, char **list, int l_size, int s_size)
 void	get_min_max(int	*list, int size, int *min, int *max)
 {
 	int	i;
-	int	min_v;
-	int	max_v;
 
-	min_v = list[0];
-	max_v = list[0];
+	*min = list[0];
+	*max = list[0];
 	i = 1;
 	while (i < size)
 	{
-		if (list[i] < min_v)
-			min_v = list[i];
-		if (list[i] < max_v)
-			max_v = list[i];
+		if (list[i] < *min)
+			*min = list[i];
+		if (list[i] > *max)
+			*max = list[i];
 		i++;
 	}
-	min = min_v;
-	max = max_v;
 }
