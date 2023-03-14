@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 23:18:19 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 10:20:02 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 18:01:16 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ t_bool	only_num(char **list, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (!is_num(list[i++]))
+		if (!is_num(list[i]))
 			return (0);
+		i++;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 14:07:44 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 18:02:28 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,34 @@
 
 int	game_init(t_game game)
 {
-	game.a.content = NULL;
-	game.b.content = NULL;
-	if (!create_stack(game.a, game.list, game.size, game.size))
+
+	game.a.size = game.size;
+	game.a.content = create_stack(game.list, game.size, game.a.size);
+	if (!game.a.content)
 		return (0);
-	if (!create_stack(game.b, game.list, game.size, 0))
+	game.b.size = 0;
+	game.b.content = create_stack(game.list, game.size, game.b.size);
+	if (!game.b.content)
 		return (0);
 	get_min_max(game.a.content, game.size, &game.min, &game.max);
 	return (1);
 }
 
-int	create_stack(t_stack stack, char **list, int l_size, int s_size)
+int	*create_stack(char **list, int l_size, int s_size)
 {
 	int	i;
+	int	*stack;
 
-	stack.content = (int *)malloc(sizeof(int) * (l_size));
-	if (!stack.content)
+	stack = (int *)malloc(sizeof(int) * (l_size));
+	if (!stack)
 		return (0);
 	i = 0;
-	while (i < l_size)
+	while (i < s_size)
 	{
-		stack.content[i] = ft_atoi(list[i]);
+		stack[i] = ft_atoi(list[i]);
 		i++;
 	}
-	stack.size = s_size;
-	return (1);
+	return (stack);
 }
 
 void	get_min_max(int	*list, int size, int *min, int *max)
