@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 10:28:53 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:07:46 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,12 @@ t_bool	is_num(char *str);
 t_bool	no_duplicate_num(char **list, int size);
 
 /* ---------------	GAME INIT	--------------- */
-void	game_init(t_game game);
-void	create_stack_a(t_game game);
-int		get_min(int *list, int size);
-int		get_max(int *list, int size);
+int		game_init(t_game game);
+int		create_stack(t_stack stack, char **list, int l_size, int s_size);
+void 	get_min_max(int *list, int size, int *min, int *max);
 
 /* ---------------	SOLVER	--------------- */
-void	game_solve(int **stack_a, int **stack_b, t_game game);
+	void game_solve(int **stack_a, int **stack_b, t_game game);
 t_bool	is_stack_ordered(int *stack, int size);
 
 /* ---------------	INSTRUCTIONS	--------------- */

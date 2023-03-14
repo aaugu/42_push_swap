@@ -6,72 +6,55 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 10:28:23 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:13:50 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	game_init(t_game game)  // this should return int
+int	game_init(t_game game)
 {
-	create_stack_a(game);
-	if (!(game.stack_a)
-		return ;
-	game.stack_b = (int *)malloc(sizeof(int));
-	if (!game.stack_b)
-		return ;
-	game.stack_b[0] = 0;
-	game.size_a = game.size;
-	game.size_b = 0;
-	game.min = get_min(game.stack_a, game.size);
-	game.max = get_max(game.stack_a, game.size);
+	if (!create_stack(game.a, game.list, game.size, game.size))
+		return (-1);
+	if (!create_stack(game.b, game.list, game.size, 0))
+		return (-1);
+	get_min(game.a.content, game.size, &game.min, &game.max);
 }
 
-void create_stack_a(t_game game) // this should return int
+int	create_stack(t_stack stack, char **list, int l_size, int s_size)
 {
 	int	i;
 
-	game.stack_a = (int *)malloc(sizeof(int) * (game.size));
-	if (!game.stack_a)
-		return ;
+	stack.content = (int *)malloc(sizeof(int) * (l_size));
+	if (!stack.content)
+		return (0);
 	i = 0;
-	while (i < (game.size))
+	while (i < l_size)
 	{
-		game.stack_a[i] = ft_atoi(game.list[i]);
+		stack.content[i] = ft_atoi(list[i]);
 		i++;
 	}
+	stack.size = s_size;
+	return (1);
 }
 
-void	get_min_max(int	*list, int size, int *min, int *max)  // do min and max in the same loop. Return min and max as pointer
+void	get_min_max(int	*list, int size, int *min, int *max)
 {
 	int	i;
-	int	min;
-	int max....
+	int	min_v;
+	int	max_v;
 
-	min = list[0];
-	max = list[0];
+	min_v = list[0];
+	max_v = list[0];
 	i = 1;
 	while (i < size)
 	{
-		if (list[i] < min)
-			min = list[i];
+		if (list[i] < min_v)
+			min_v = list[i];
+		if (list[i] < max_v)
+			max_v = list[i];
 		i++;
 	}
-	return (min);
-}
-
-int	get_max(int	*list, int size)
-{
-	int	i;
-	int	max;
-
-	max = list[0];
-	i = 1;
-	while (i < size)
-	{
-		if (list[i] > max)
-			max = list[i];
-		i++;
-	}
-	return (max);
+	min = min_v;
+	max = max_v;
 }

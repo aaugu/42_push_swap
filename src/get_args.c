@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 08:17:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 10:24:41 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 10:31:04 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**get_args(char **argv, int argc)
 	else if (argc == 2)
 		return (ft_split(argv[1], ' '));
 	else
-		return (parse_args(&argv[1], argc - 1));
+		return (parse_args(&argv[1], (argc - 1)));
 }
 
 char	**parse_args(char **input, int size)
