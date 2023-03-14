@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 11:43:20 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 13:07:02 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ t_bool	is_stack_ordered(int *stack, int size);
 /* ---------------	INSTRUCTIONS	--------------- */
 void	push(t_stack src, t_stack dest, char *instruction);
 void 	swap(int *stack, char *instruction);
-void	rotate(int *stack, char *instruction);
-void	reverse_rotate(int *stack, char *instruction);
+void	rotate(t_stack stack, char *instruction);
+void	reverse_rotate(t_stack stack, char *instruction);
 
 /* ---------------	ENDGAME UTILS	--------------- */
 void	game_clear(t_game game);
