@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 11:07:46 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:20:19 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		create_stack(t_stack stack, char **list, int l_size, int s_size);
 void 	get_min_max(int *list, int size, int *min, int *max);
 
 /* ---------------	SOLVER	--------------- */
-	void game_solve(int **stack_a, int **stack_b, t_game game);
+void 	game_solve(t_stack a, t_stack b)
 t_bool	is_stack_ordered(int *stack, int size);
 
 /* ---------------	INSTRUCTIONS	--------------- */

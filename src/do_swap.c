@@ -6,13 +6,13 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:17:04 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 10:02:51 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:27:05 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	swap(int **list, int size, t_game *game)
+void	swap(int **list, int size)
 {
 	int	*new_list;
 	int	i;

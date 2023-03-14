@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 11:16:27 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:24:23 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 		ft_printf("Error\nSomething went wrong while creating stacks.");
 		game_clear(&game);
 	}
-	game_solve(&game.a, &game.b);
+	game_solve(game.a, game.b, game.min, game.max);
 	game_clear(&game);
 	return (0);
 }
