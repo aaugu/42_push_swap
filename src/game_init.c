@@ -6,13 +6,13 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 10:03:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 10:28:23 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	game_init(t_game *game)  // this should return int
+void	game_init(t_game game)  // this should return int
 {
 	create_stack_a(game);
 	if (!(game.stack_a)
@@ -27,7 +27,7 @@ void	game_init(t_game *game)  // this should return int
 	game.max = get_max(game.stack_a, game.size);
 }
 
-void create_stack_a(t_game *game) // this should return int
+void create_stack_a(t_game game) // this should return int
 {
 	int	i;
 
@@ -42,13 +42,14 @@ void create_stack_a(t_game *game) // this should return int
 	}
 }
 
-void	get_min_max(int	*list, int size, int* min, int* max)  // do min and max in the same loop. Return min and max as pointer
+void	get_min_max(int	*list, int size, int *min, int *max)  // do min and max in the same loop. Return min and max as pointer
 {
 	int	i;
 	int	min;
 	int max....
 
 	min = list[0];
+	max = list[0];
 	i = 1;
 	while (i < size)
 	{

@@ -6,26 +6,25 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 23:18:19 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 10:03:36 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 10:20:02 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_bool	is_list_valid(t_game *game)
+t_bool	is_list_valid(char	**list, int size)
 {
-	game.size = ft_strs_len(game.list);
-	if (!game.size)
+	if (!size)
 	{
 		ft_printf("Error\nList empty.\n");
 		return (0);
 	}
-	if (!only_num(game.list, game.size))
+	if (!only_num(list, size))
 	{
 		ft_printf("Error\nNon numeric parameter in the list.\n");
 		return (0);
 	}
-	if (!no_duplicate_num(game.list, game.size))
+	if (!no_duplicate_num(list, size))
 	{
 		ft_printf("Error\nList has duplicates.\n");
 		return (0);
@@ -40,9 +39,8 @@ t_bool	only_num(char **list, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (!is_num(list[i]))
+		if (!is_num(list[i++]))
 			return (0);
-		i++;
 	}
 	return (1);
 }
