@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 08:17:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 10:31:04 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:44:37 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**parse_args(char **input, int size)
 	i = 0;
 	while (i < size)
 	{
-		list[i] = ft_strdup(input[j]);
+		list[i] = ft_strdup(input[i]);
 		if (!list[i++])
 		{
 			ft_strs_free(list, size);

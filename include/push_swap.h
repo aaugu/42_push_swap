@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 11:20:19 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:43:20 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_game
 
 /* ---------------	PARSE INPUT	--------------- */
 char	**get_args(char **argv, int argc);
-char	**parse_args(char **input);
+char	**parse_args(char **input, int size);
 
 /* ---------------	CHECKS	--------------- */
 t_bool 	is_list_valid(char **list, int size);
@@ -48,18 +48,14 @@ int		create_stack(t_stack stack, char **list, int l_size, int s_size);
 void 	get_min_max(int *list, int size, int *min, int *max);
 
 /* ---------------	SOLVER	--------------- */
-void 	game_solve(t_stack a, t_stack b)
+void	game_solve(t_stack a, t_stack b, int *min, int *max);
 t_bool	is_stack_ordered(int *stack, int size);
 
 /* ---------------	INSTRUCTIONS	--------------- */
-void	push_a(int **a, int **b, t_game game);
-void	push_b(int **a, int **b, t_game game);
-int		*add_up(int *src, int to_add, int size);
-int		*remove_up(int *list, int size);
-
-void	swap(int **list, int size, t_game game);
-void	rotate(int **list, int size, t_game game);
-void	reverse_rotate(int **list, int size, t_game game);
+void	push(t_stack src, t_stack dest, char *instruction);
+void 	swap(int *stack, char *instruction);
+void	rotate(int *stack, char *instruction);
+void	reverse_rotate(int *stack, char *instruction);
 
 /* ---------------	ENDGAME UTILS	--------------- */
 void	game_clear(t_game game);

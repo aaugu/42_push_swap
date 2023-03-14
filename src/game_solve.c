@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:17:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 11:32:09 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:40:21 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	game_solve(t_stack a, t_stack b, int *min, int *max)
 		else if (a[0] > a[1])
 			swap(a.content, "sa");
 		else
-			reverse_rotate(a.content, a.size, "rra");
+			reverse_rotate(a, "rra");
 	}
 	while (b.size != 0)
 	{

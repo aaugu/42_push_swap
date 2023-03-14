@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:17:11 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 10:02:43 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:46:52 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,4 @@ void	rotate(int **list, int size, t_game *game)
 	}
 	free(*list);
 	*list = new_list;
-	if (list == &game.stack_a)
-		ft_printf("ra\n");
-	if (list == &game.stack_b)
-		ft_printf("rb\n");
 }
