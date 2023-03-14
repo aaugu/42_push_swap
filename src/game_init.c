@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 21:33:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 10:03:11 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 void	game_init(t_game *game)  // this should return int
 {
 	create_stack_a(game);
-	if (!(game->stack_a)
+	if (!(game.stack_a)
 		return ;
-	game->stack_b = (int *)malloc(sizeof(int));
-	if (!game->stack_b)
+	game.stack_b = (int *)malloc(sizeof(int));
+	if (!game.stack_b)
 		return ;
-	game->stack_b[0] = 0;
-	game->size_a = game->size;
-	game->size_b = 0;
-	game->min = get_min(game->stack_a, game->size);
-	game->max = get_max(game->stack_a, game->size);
+	game.stack_b[0] = 0;
+	game.size_a = game.size;
+	game.size_b = 0;
+	game.min = get_min(game.stack_a, game.size);
+	game.max = get_max(game.stack_a, game.size);
 }
 
 void create_stack_a(t_game *game) // this should return int
 {
 	int	i;
 
-	game->stack_a = (int *)malloc(sizeof(int) * (game->size));
-	if (!game->stack_a)
+	game.stack_a = (int *)malloc(sizeof(int) * (game.size));
+	if (!game.stack_a)
 		return ;
 	i = 0;
-	while (i < (game->size))
+	while (i < (game.size))
 	{
-		game->stack_a[i] = ft_atoi(game->list[i]);
+		game.stack_a[i] = ft_atoi(game.list[i]);
 		i++;
 	}
 }

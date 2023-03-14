@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:17:04 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 13:32:30 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 10:02:51 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	swap(int **list, int size, t_game *game)
 		}
 		free(*list);
 		*list = new_list;
-		if (list == &game->stack_a)
+		if (list == &game.stack_a)
 			ft_printf("sa\n");
-		if (list == &game->stack_b)
+		if (list == &game.stack_b)
 			ft_printf("sb\n");
 	}
 }

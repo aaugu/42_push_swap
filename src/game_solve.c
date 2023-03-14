@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:17:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/13 21:33:17 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 10:03:23 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,25 @@ void	game_solve(int **stack_a, int **stack_b, t_game *game)
 	a = *stack_a;
 	b = *stack_b;
 
-	while (!is_stack_ordered(a, game->size_a) && game->size_b != 0)  // this should be a ||
+	while (!is_stack_ordered(a, game.size_a) && game.size_b != 0)  // this should be a ||
 	{
-		if (a[0] == game->min)
+		if (a[0] == game.min)
 		{
 			push_b(&a, &b, game);
-			game->min = get_min(a, game->size_a);
+			game.min = get_min(a, game.size_a);
 		}
-		if (a[0] == game->max)
+		if (a[0] == game.max)
 		{
 			push_b(&a, &b, game);
-			game->max = get_max(a, game->size_a);
+			game.max = get_max(a, game.size_a);
 		}
 
 		if (a[0] > a[1])
-			swap(&a, game->size_a, game);
+			swap(&a, game.size_a, game);
 		else if (a[0] < a[1])
-			reverse_rotate(&a, game->size_a, game);
+			reverse_rotate(&a, game.size_a, game);
 
-		if (is_stack_ordered(a, game->size_a) && game->size_b != 0)
+		if (is_stack_ordered(a, game.size_a) && game.size_b != 0)
 			push_a(&a, &b, game);
 	}
 }
