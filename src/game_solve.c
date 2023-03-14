@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:17:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 11:40:21 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/14 11:49:01 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	game_solve(t_stack a, t_stack b, int *min, int *max)
 	{
 		if (a.content[0] == min || a.content[0] == max)
 		{
-			push(a, b, "");
+			push(a, b, "pa");
 			get_min_max(a.content, a.size, min, max);
 		}
 		else if (a[0] > a[1])

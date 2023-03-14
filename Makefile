@@ -13,10 +13,7 @@ SRCS_FILES = 	main.c \
 				list_checks.c \
 				game_init.c \
 				game_solve.c \
-				do_push.c \
-				do_swap.c \
-				do_rotate.c \
-				do_reverse_rotate.c \
+				instructions.c \
 				game_clear.c
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
