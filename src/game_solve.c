@@ -6,50 +6,18 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:17:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/15 00:09:32 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/16 16:26:25 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	game_solve(t_stack *a, t_stack *b)
+void	game_solve(t_stack *a, t_stack *b, int med)
 {
-	int	min;
-	int	max;
-
-	get_min_max(a->content, a->size, &min, &max);
-	while (!is_stack_ordered(a->content, a->size))
-	{
-		if (a->content[0] == min || a->content[0] == max)
-		{
-			push(a, b, "pb");
-			get_min_max(a->content, a->size, &min, &max);
-		}
-		else if (a->content[0] > a->content[1])
-			swap(a->content, "sa");
-		else
-			reverse_rotate(a, "rra");
-	}
-	while (b->size != 0)
-	{
-		push(b, a, "pa");
-		if (a->content[0] > a->content[1])
-			rotate(a, "ra");
-	}
-}
-
-t_bool	is_stack_ordered(int *stack, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		if (stack[i] > stack[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
+	if (a->size >= 2 && a->size <= 3)
+		sort_small_a(a);
+	else
+		solve(a, b, med);
 }
 
 void	get_min_max(int *list, int size, int *min, int *max)
@@ -66,5 +34,50 @@ void	get_min_max(int *list, int size, int *min, int *max)
 		if (list[i] > *max)
 			*max = list[i];
 		i++;
+	}
+}
+
+void	solve(t_stack *a, t_stack *b, int med)
+{
+	sort_a(a, b, med);
+	while (b->size != 0)
+	{
+		push(b, a, "pa");
+		if (a->stack[0] > a->stack[1])
+			rotate(a, "ra");
+	}
+}
+
+void	sort_a(t_stack *a, t_stack *b, int med)
+{
+	int	min;
+	int	max;
+
+	get_min_max(a->stack, a->size, &min, &max);
+	while (!ft_is_sort(a->stack, a->size))
+	{
+		if (a->size >= 2 && a->size <= 3)
+			sort_small_a(a);
+		else if ((a->stack[0] == min && a->stack[0] < med) \
+				|| a->stack[0] == max)
+		{
+			push(a, b, "pb");
+			get_min_max(a->stack, a->size, &min, &max);
+		}
+		else if (a->stack[0] > a->stack[1])
+			swap(a->stack, "sa");
+		else
+			reverse_rotate(a, "rra");
+	}
+}
+
+void	sort_small_a(t_stack *a)
+{
+	while (!ft_is_sort(a->stack, a->size))
+	{
+		if (a->stack[0] > a->stack[1])
+			swap(a->stack, "sa");
+		else
+			reverse_rotate(a, "rra");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 12:03:34 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 10:47:33 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/16 15:58:50 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	**ft_split(char const *s, char c);
 char	**ft_strs_copy(const char **src, int size);
 
+void	ft_sort_strs(char **list, int size);
 void	ft_strs_free(char **strs, int size);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
@@ -83,8 +84,11 @@ void	*ft_memset(void *b, int c, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 
 /* ---------------	NUMBERS	--------------- */
+int		ft_median(int *list, int size);
 int		ft_atoi(const char *str);
+t_bool	ft_is_sort(int *list, int size);
 char	*ft_itoa(int n);
+void	ft_sort(int *list, int size);
 
 /* ---------------	FILE DESCRIPTORS	--------------- */
 void	ft_putchar_fd(char c, int fd);

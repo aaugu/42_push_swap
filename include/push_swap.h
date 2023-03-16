@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 23:47:52 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/16 16:32:41 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /* ---------------	TYPEDEF	--------------- */
 typedef struct s_stack
 {
-	int	*content;
+	int	*stack;
 	int	size;
 }	t_stack;
 
@@ -27,7 +27,9 @@ typedef struct s_game
 	t_stack	a;
 	t_stack	b;
 	char	**list;
+	int		*copy;
 	int		size;
+	int		med;
 }			t_game;
 
 /* ---------------	PARSE INPUT	--------------- */
@@ -45,9 +47,11 @@ int		game_init(t_game *game);
 int		*create_stack(char **list, int l_size, int s_size);
 
 /* ---------------	SOLVER	--------------- */
-void	game_solve(t_stack *a, t_stack *b);
-t_bool	is_stack_ordered(int *stack, int size);
+void	game_solve(t_stack *a, t_stack *b, int med);
 void	get_min_max(int *list, int size, int *min, int *max);
+void	solve(t_stack *a, t_stack *b, int med);
+void	sort_a(t_stack *a, t_stack *b, int med);
+void	sort_small_a(t_stack *a);
 
 /* ---------------	INSTRUCTIONS	--------------- */
 void	push(t_stack *src, t_stack *dest, char *instruction);

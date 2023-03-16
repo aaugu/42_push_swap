@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 23:18:19 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 18:01:16 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/16 11:39:25 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,11 @@
 t_bool	is_list_valid(char	**list, int size)
 {
 	if (!size)
-	{
-		ft_printf("Error\nList empty.\n");
 		return (0);
-	}
 	if (!only_num(list, size))
-	{
-		ft_printf("Error\nNon numeric parameter in the list.\n");
 		return (0);
-	}
 	if (!no_duplicate_num(list, size))
-	{
-		ft_printf("Error\nList has duplicates.\n");
 		return (0);
-	}
 	return (1);
 }
 

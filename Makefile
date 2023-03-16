@@ -20,7 +20,7 @@ SRCS = $(addprefix ./src/, $(SRCS_FILES))
 OBJS = $(SRCS:%.c=%.o)
 
 %.o : %.c
-			$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
+			@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 
 all:		$(NAME)
 
@@ -33,6 +33,18 @@ $(LIBFT):
 			@echo " [ .. ] | Compiling libft.."
 			@make -s -C libft
 			@echo " [ OK ] | Libft ready!"
+
+test5:		$(NAME)
+			$(eval ARG = $(shell jot -r 5 -50 49))
+			./push_swap $(ARG) | ./checker_Mac $(ARG)
+			@echo -n "Instructions: "
+			@./push_swap $(ARG) | wc -l
+
+test100:	$(NAME)
+			$(eval ARG = $(shell jot -r 100 -100000 100000))
+			./push_swap $(ARG) | ./checker_Mac $(ARG)
+			@echo -n "Instructions: "
+			@./push_swap $(ARG) | wc -l
 
 clean:
 			@echo " [ .. ] | Cleaning objects.."

@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 08:17:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/14 11:44:37 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/16 11:38:02 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 char	**get_args(char **argv, int argc)
 {
 	if (argc == 1)
-	{
-		ft_printf("Error\nWrong number of arguments.\n");
 		return (NULL);
-	}
 	else if (argc == 2)
 		return (ft_split(argv[1], ' '));
 	else
@@ -30,10 +27,10 @@ char	**parse_args(char **input, int size)
 	char	**list;
 	int		i;
 
-	list = (char **)malloc(sizeof(char *) * (size));
+	list = (char **)malloc(sizeof(char *) * (size + 1));
 	if (!list)
 		return (NULL);
-	list[size - 1] = NULL;
+	list[size] = NULL;
 	i = 0;
 	while (i < size)
 	{

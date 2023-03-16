@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_dptr.c                                     :+:      :+:    :+:   */
+/*   ft_median.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 10:54:47 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:50 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/16 11:53:28 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/16 14:20:22 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-void	ft_strs_free(char **strs, int size)
+int	ft_median(int *list, int size)
 {
 	int	i;
+	int	median;
 
-	i = 0;
-	while (i < size && strs[i])
-		free(strs[i++]);
-	free(strs);
+	ft_sort(list, size);
+	if (size % 2 == 0)
+		median = list[(size / 2) - 1];
+	else
+		median = list[size / 2];
+	return (median);
 }
+
+// int	ft_median_strs(char **list, int size)
+// {
+// 	int		i;
+// 	char	*median;
+
+// 	ft_sort_strs(list, size);
+// 	if (size % 2 == 0)
+// 		median = list[(size / 2) - 1];
+// 	else
+// 		median = list[size / 2];
+// 	return (ft_atoi(median));
+// }
