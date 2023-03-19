@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 08:17:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/16 11:38:02 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/19 19:11:34 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,23 @@
 
 char	**get_args(char **argv, int argc)
 {
+	char	**list;
+
 	if (argc == 1)
 		return (NULL);
 	else if (argc == 2)
-		return (ft_split(argv[1], ' '));
+	{
+		list = ft_split(argv[1], ' ');
+		if (!list)
+			return NULL;
+	}
 	else
-		return (parse_args(&argv[1], (argc - 1)));
+	{
+		list = parse_args(&argv[1], (argc - 1));
+		if (!list)
+			return NULL;
+	}
+	return (list);
 }
 
 char	**parse_args(char **input, int size)

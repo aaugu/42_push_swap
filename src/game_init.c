@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:00:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/16 16:03:30 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/19 19:03:57 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 int	game_init(t_game *game)
 {
 	game->a.size = game->size;
-	game->copy = create_stack(game->list, game->size, game->a.size);
-	if (!game->a.stack)
-		return (0);
 	game->a.stack = create_stack(game->list, game->size, game->a.size);
 	if (!game->a.stack)
 		return (0);
 	game->b.size = 0;
 	game->b.stack = create_stack(game->list, game->size, game->b.size);
 	if (!game->b.stack)
+	{
+		free(game->a.stack);
 		return (0);
+	}
 	return (1);
 }
 

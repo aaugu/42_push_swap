@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:49:38 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/16 16:49:18 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/19 12:34:16 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	push(t_stack *src, t_stack *dest, char *instruction)
 		i--;
 	}
 	dest->stack[0] = temp;
-	i = 0;
-	while (i < src->size)
-		ft_printf("%d\n", src->stack[i++]);
+	// i = 0;
+	// while (i < src->size)
+	// 	ft_printf("%d\n", src->stack[i++]);
 	ft_printf("%s\n", instruction);
 }
 
@@ -62,9 +62,9 @@ void	rotate(t_stack *stack, char *instruction)
 		i++;
 	}
 	stack->stack[i] = temp;
-	i = 0;
-	while (i < stack->size)
-		ft_printf("%d\n", stack->stack[i++]);
+	// i = 0;
+	// while (i < stack->size)
+	// 	ft_printf("%d\n", stack->stack[i++]);
 	ft_printf("%s\n", instruction);
 }
 
@@ -73,16 +73,16 @@ void	reverse_rotate(t_stack *stack, char *instruction)
 	int	temp;
 	int	i;
 
-	temp = stack->stack[stack->size];
-	i = stack->size;
+	temp = stack->stack[stack->size - 1];
+	i = stack->size - 1;
 	while (i)
 	{
 		stack->stack[i] = stack->stack[i - 1];
 		i--;
 	}
 	stack->stack[i] = temp;
-	i = 0;
-	while (i < stack->size)
-		ft_printf("%d\n", stack->stack[i++]);
+	// i = 0;
+	// while (i < stack->size)
+	// 	ft_printf("%d\n", stack->stack[i++]);
 	ft_printf("%s\n", instruction);
 }

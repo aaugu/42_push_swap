@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 13:46:07 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/16 15:59:25 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/19 18:34:43 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_sort(int *list, int size)
 {
 	int	i;
 	int	j;
-	int	k;
 	int	temp;
 
 	i = 0;
