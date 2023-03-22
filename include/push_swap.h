@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/19 18:24:03 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/22 12:04:25 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,18 @@ t_bool	is_num(char *str);
 t_bool	no_duplicate_num(char **list, int size);
 
 /* ---------------	GAME INIT	--------------- */
-int		game_init(t_game *game);
+int		init_stacks(t_game *game);
 int		*create_stack(char **list, int l_size, int s_size);
+void	convert_int(char **list, t_stack *a);
 
 /* ---------------	SOLVER	--------------- */
-void	game_solve(t_stack *a, t_stack *b, int med);
+void	solve(t_stack *a, t_stack *b);
+void	sort_three(t_stack *a);
+void	sort_small(t_stack *a, t_stack *b);
+void	sort_small_a(t_stack *a, t_stack *b);
+void	sort_big(t_stack *a, t_stack *b);
+
 void	get_min_max(int *list, int size, int *min, int *max);
-void	solve(t_stack *a, t_stack *b, int med);
-void	sort_a(t_stack *a, t_stack *b, int med);
-void	sort_small_a(t_stack *a);
 
 /* ---------------	INSTRUCTIONS	--------------- */
 void	push(t_stack *src, t_stack *dest, char *instruction);
@@ -60,6 +63,6 @@ void	rotate(t_stack *stack, char *instruction);
 void	reverse_rotate(t_stack *stack, char *instruction);
 
 /* ---------------	ENDGAME UTILS	--------------- */
-void	game_clear(t_game *game);
+void	error(char *error);
 
 #endif
