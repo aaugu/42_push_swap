@@ -6,26 +6,29 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:58:23 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 12:07:09 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/22 18:59:11 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	init_stacks(t_game *game)
+int		*create_stack(char **list, int l_size, int s_size);
+void	convert_int(char **list, t_stack *a);
+
+int	init_stacks(char **list, int size, t_stack *a, t_stack *b)
 {
-	game->a.size = game->size;
-	game->a.stack = create_stack(game->list, game->size, game->a.size);
-	if (!game->a.stack)
+	a->size = size;
+	a->stack = create_stack(list, size, a->size);
+	if (!a->stack)
 		return (0);
-	game->b.size = 0;
-	game->b.stack = (int *)ft_calloc(sizeof(int), game->size);
-	if (!game->b.stack)
+	b->size = 0;
+	b->stack = (int *)ft_calloc(sizeof(int), size);
+	if (!b->stack)
 	{
-		free(game->a.stack);
+		free(a->stack);
 		return (0);
 	}
-	convert_int(game->list, &game->a);
+	convert_int(list, a);
 	return (1);
 }
 

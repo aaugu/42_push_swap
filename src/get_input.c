@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_args.c                                         :+:      :+:    :+:   */
+/*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 08:17:49 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 11:54:38 by aaugu            ###   ########.fr       */
+/*   Created: 2023/03/22 18:48:33 by aaugu             #+#    #+#             */
+/*   Updated: 2023/03/22 18:53:54 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-char	**get_args(char **argv, int argc)
+char	**parse_args(char **args, int size);
+
+char	**get_input(char **argv, int argc)
 {
 	char	**list;
 
@@ -25,7 +27,7 @@ char	**get_args(char **argv, int argc)
 	return (list);
 }
 
-char	**parse_args(char **input, int size)
+char	**parse_args(char **args, int size)
 {
 	char	**list;
 	int		i;
@@ -37,7 +39,7 @@ char	**parse_args(char **input, int size)
 	i = 0;
 	while (i < size)
 	{
-		list[i] = ft_strdup(input[i]);
+		list[i] = ft_strdup(args[i]);
 		if (!list[i++])
 		{
 			ft_strs_free(list, size);

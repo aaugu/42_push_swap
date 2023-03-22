@@ -6,31 +6,33 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:58:47 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 11:58:49 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/22 18:53:18 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+t_bool	list_is_num(char **list, int size);
+t_bool	is_num(char *str);
+t_bool	no_duplicate_num(char **list, int size);
+
 t_bool	is_list_valid(char	**list, int size)
 {
-	if (!size)
+	if (only_num(list, size) == FALSE)
 		return (0);
-	if (!only_num(list, size))
-		return (0);
-	if (!no_duplicate_num(list, size))
+	if (no_duplicate_num(list, size) == FALSE)
 		return (0);
 	return (1);
 }
 
-t_bool	only_num(char **list, int size)
+t_bool	list_is_num(char **list, int size)
 {
 	int	i;
 
 	i = 0;
 	while (i < size)
 	{
-		if (!is_num(list[i]))
+		if (is_num(list[i]) == FALSE)
 			return (0);
 		i++;
 	}
@@ -53,6 +55,7 @@ t_bool	is_num(char *str)
 	return (0);
 }
 
+// Checks if there are duplicates in list.
 t_bool	no_duplicate_num(char **list, int size)
 {
 	int	i;

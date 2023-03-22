@@ -14,7 +14,6 @@ SRCS_FILES = 	main.c \
 				init_stacks.c \
 				solver.c \
 				sort_small.c \
-				sort_big \
 				instructions.c \
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))

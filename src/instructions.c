@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:49:38 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 11:59:19 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/22 15:15:35 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	swap(int *stack, char *instruction)
 	temp = stack[0];
 	stack[0] = stack[1];
 	stack[1] = temp;
-	ft_printf("%s\n", instruction);
+	if (instruction)
+		ft_printf("%s\n", instruction);
 }
 
 void	rotate(t_stack *stack, char *instruction)
@@ -59,7 +60,8 @@ void	rotate(t_stack *stack, char *instruction)
 		i++;
 	}
 	stack->stack[i] = temp;
-	ft_printf("%s\n", instruction);
+	if (instruction)
+		ft_printf("%s\n", instruction);
 }
 
 void	reverse_rotate(t_stack *stack, char *instruction)
@@ -75,5 +77,6 @@ void	reverse_rotate(t_stack *stack, char *instruction)
 		i--;
 	}
 	stack->stack[i] = temp;
-	ft_printf("%s\n", instruction);
+	if (instruction)
+		ft_printf("%s\n", instruction);
 }
