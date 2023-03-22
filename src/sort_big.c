@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:59:28 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 18:28:32 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 00:11:38 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +27,25 @@ void	sort_big(t_stack *a, t_stack *b)
 		sort_three(a);
 	empty_b(a, b);
 	while (ft_is_sort(a->stack, a->size) == FALSE)
-	{
 		reverse_rotate(a, "rra");
-	}
 }
 
 int	sort_a(t_stack *a, t_stack *b)
 {
 	int	*costs;
-	int	to_move;
+	int	pos_a;
+	int pos_b;
 
 	while (a->size > 3)
 	{
 		costs = get_costs(a, b);
 		if (!costs)
 			return (0);
-		to_move = get_first_min(costs, (a->size + b->size));
-		do_moves(a, b, to_move, get_pos_b(b, a->stack[to_move]));
+		pos_a = get_first_min(costs, (a->size + b->size));
+		pos_b = get_pos_b(b, a->stack[pos_a]);
+		do_moves(a, b, pos_a, pos_b);
 		free(costs);
 	}
-}
-
-int get_first_min(int *list, int size)
-{
-	int min;
-	int i;
-
-	min = get_min(list, size);
-	i = 0;
-	while (list[i] != min)
-		i++;
-	return (i);
 }
 
 void	empty_b(t_stack *a, t_stack *b)
