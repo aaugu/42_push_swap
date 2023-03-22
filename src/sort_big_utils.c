@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:12:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 00:16:05 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 00:21:09 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,7 @@ int	cost_move_top(t_stack *stack, int pos)
 void	do_moves(t_stack *a, t_stack *b, int pos_a, int pos_b)
 {
 	while (pos_a != 0 && pos_b != 0)
+	{
+
+	}
 }
