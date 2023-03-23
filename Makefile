@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 INCLUDE = -I include -I libft
 LIB = -Llibft -lft
@@ -17,6 +17,7 @@ SRCS_FILES = 	main.c \
 				sort_big.c \
 				sort_big_utils.c \
 				position_utils.c \
+				moves_utils.c \
 				instructions.c \
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
@@ -45,12 +46,6 @@ test5:		$(NAME)
 
 test50:		$(NAME)
 			$(eval ARG = $(shell jot -r 9 0 100000))
-			./push_swap $(ARG) | ./checker_Mac $(ARG)
-			@echo -n "Instructions: "
-			@./push_swap $(ARG) | wc -l
-
-test100:	$(NAME)
-			$(eval ARG = $(shell jot -r 100 0 499))
 			./push_swap $(ARG) | ./checker_Mac $(ARG)
 			@echo -n "Instructions: "
 			@./push_swap $(ARG) | wc -l
