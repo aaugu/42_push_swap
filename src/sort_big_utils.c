@@ -6,13 +6,15 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:12:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 00:21:09 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 13:06:50 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int 	cost_move_top(t_stack *stack, int pos);
+int		cost_move_top(t_stack *stack, int pos);
+void	move_top_both(t_stack *a, t_stack *b);
+int		move_top_one(t_stack *stack, char *pile);
 
 // Get costs of moving of every number in A to the good position in B.
 int	*get_costs(t_stack *a, t_stack *b)
@@ -23,7 +25,7 @@ int	*get_costs(t_stack *a, t_stack *b)
 	int	pos_b;
 	int	i;
 
-	costs = (int *)ft_calloc(sizeof(int), (a->size + b->size));
+	costs = (int *)ft_calloc(sizeof(int), a->size);
 	if (!costs)
 		return (0);
 	i = 0;
@@ -32,7 +34,7 @@ int	*get_costs(t_stack *a, t_stack *b)
 		cost_a = cost_move_top(a, i);
 		pos_b = get_pos_b(b, a->stack[i]);
 		cost_b = cost_move_top(b, pos_b);
-		if (is_same_pos(a->stack[i], pos_b, a->size, b->size) == TRUE)
+		if (is_same_pos(i, pos_b, a->size, b->size) == TRUE)
 			costs[i] = cost_a;
 		else
 			costs[i] = cost_a + cost_b;
@@ -43,16 +45,70 @@ int	*get_costs(t_stack *a, t_stack *b)
 
 int	cost_move_top(t_stack *stack, int pos)
 {
-	if (pos <= (stack->size - 1) / 2)
+	if (is_at_begin(pos, stack->size) == TRUE)
 		return (pos);
 	else
 		return (stack->size - pos);
 }
 
-void	do_moves(t_stack *a, t_stack *b, int pos_a, int pos_b)
+int	moves_top(t_stack *a, t_stack *b)
 {
-	while (pos_a != 0 && pos_b != 0)
+	while (b->pos != 0)
 	{
-
+		if (is_same_pos(a->pos, b->pos, a->size, b->size) == TRUE)
+			move_top_both(a, b);
+		else
+		{
+			if (!move_one(b, "b"))
+				return (0);
+		}
+		b->min = get_min(b->stack, b->size);
+		b->max = get_max(b->stack, b->size);
 	}
+	while (a->pos != 0)
+	{
+		if (!move_top_one(a, "a"))
+			return (0);
+	}
+	return (1);
+}
+
+void	move_top_both(t_stack *a, t_stack *b)
+{
+	if (is_at_begin(a->pos, a->size) && is_at_begin(b->pos, b->size))
+	{
+		rotate(a, NULL);
+		rotate(b, "rr");
+	}
+	else
+	{
+		reverse_rotate(a, NULL);
+		reverse_rotate(b, "rrr");
+	}
+	a->pos--;
+	b->pos--;
+}
+
+int	move_top_one(t_stack *stack, char *pile)
+{
+	char	*instruction;
+
+	instruction = (char *)ft_calloc(sizeof(char), 4);
+	if (!instruction)
+		return (0);
+	if (is_at_begin(stack->pos, stack->size))
+	{
+		instruction[0] = 'r';
+		ft_strlcat(instruction, pile, 3);
+		rotate(stack, instruction);
+	}
+	else
+	{
+		instruction[0] = 'r';
+		instruction[1] = 'r';
+		ft_strlcat(instruction, pile, 4);
+		reverse_rotate(stack, instruction);
+	}
+	free(instruction);
+	return (stack->pos--);
 }

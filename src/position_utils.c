@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 23:43:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 23:57:47 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 13:02:19 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ If the number you push is going to be the new max or new min, it should be
 placed just above the old max. Else, if number - 1 exists in B, it should be
 placed just above number - 1 in B. Else just put it on B.
 */
-int get_pos_b(t_stack *b, int nb_a)
+int	get_pos_b(t_stack *b, int nb_a)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (nb_a > b->max || nb_a < b->min)
@@ -42,13 +42,14 @@ int get_pos_b(t_stack *b, int nb_a)
 			i++;
 		}
 	}
-	else
-		return (0);
+	return (0);
 }
 
-t_bool is_same_pos(int pos_a, int pos_b, int size_a, int size_b)
+t_bool	is_same_pos(int pos_a, int pos_b, int size_a, int size_b)
 {
-	if (is_at_begin(pos_a, size_a) && is_at_begin(pos_b, size_b) \
+	if ((pos_a == 0 && pos_b == 0) || (pos_a == 1 && pos_b == 1))
+		return (1);
+	else if (is_at_begin(pos_a, size_a) && is_at_begin(pos_b, size_b) \
 		&& pos_a == pos_b)
 		return (1);
 	else if (!is_at_begin(pos_a, size_a) && !is_at_begin(pos_b, size_b) \
@@ -57,7 +58,7 @@ t_bool is_same_pos(int pos_a, int pos_b, int size_a, int size_b)
 	return (0);
 }
 
-t_bool is_at_begin(int pos, int size)
+t_bool	is_at_begin(int pos, int size)
 {
 	if ((pos <= (size - 1) / 2))
 		return (1);

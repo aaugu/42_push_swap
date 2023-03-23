@@ -6,18 +6,19 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 20:45:23 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 10:29:33 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+void	error_exit(char *error);
+void	clear_error_exit(t_game *game, char *error);
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	if (argc == 1)
-		return (0);
 	game.list = get_input(argv, argc);
 	if (!game.list)
 		error_exit("Error\n");

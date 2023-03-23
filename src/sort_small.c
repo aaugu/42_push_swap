@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:59:25 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 18:25:49 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 10:30:12 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,17 @@ void	sort_small(t_stack *a, t_stack *b)
 
 void	sort_small_a(t_stack *a, t_stack *b)
 {
-	int min;
-	int max;
-
-	get_min_max(a->stack, a->size, &min, &max);
+	a->min = get_min(a->stack, a->size);
+	a->max = get_max(a->stack, a->size);
 	while (ft_is_sort(a->stack, a->size) == FALSE)
 	{
 		if (a->size >= 2 && a->size <= 3)
 			sort_three(a);
-		else if (a->stack[0] == min || a->stack[0] == max)
+		else if (a->stack[0] == a->min || a->stack[0] == a->max)
 		{
 			push(a, b, "pb");
-			get_min_max(a->stack, a->size, &min, &max);
+			a->min = get_min(a->stack, a->size);
+			a->max = get_max(a->stack, a->size);
 		}
 		else if (a->stack[0] > a->stack[1])
 			swap(a->stack, "sa");

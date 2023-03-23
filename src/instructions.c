@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:49:38 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 15:15:35 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 11:29:57 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	rotate(t_stack *stack, char *instruction)
 		stack->stack[i] = stack->stack[i + 1];
 		i++;
 	}
-	stack->stack[i] = temp;
+	stack->stack[i - 1] = temp;
 	if (instruction)
 		ft_printf("%s\n", instruction);
 }

@@ -9,14 +9,14 @@ LIBFT = libft/libft.a
 RM = rm -f
 
 SRCS_FILES = 	main.c \
-				get_args.c \
+				get_input.c \
 				checks.c \
 				init_stacks.c \
 				solver.c \
 				sort_small.c \
 				sort_big.c \
 				sort_big_utils.c \
-				position_utils.c
+				position_utils.c \
 				instructions.c \
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))
