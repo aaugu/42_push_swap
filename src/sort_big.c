@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:59:28 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 22:54:19 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/24 00:34:49 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,8 @@ int	sort_a(t_stack *a, t_stack *b)
 {
 	int	*costs;
 	int	i;
-	int	j = 0;
 
-	// while (a->size > 3)
-	while (j <= 3)
+	while (a->size > 3)
 	{
 		b->min = get_min(b->stack, b->size);
 		b->max = get_max(b->stack, b->size);
@@ -66,15 +64,9 @@ int	sort_a(t_stack *a, t_stack *b)
 			return (0);
 		a->pos = get_first_min(costs, a->size);
 		b->pos = get_pos_b(b, a->stack[a->pos]);
-		ft_printf("/ %d / %d => ", a->pos, b->pos);
-		print_stack(a, " / ");
-		print_stack(b, " / ");
-		if(j == 3)
-			exit(0);
 		move_pos_top(a, b);
 		push(a, b, "pb");
 		free(costs);
-		j++;
 	}
 	return (1);
 }
