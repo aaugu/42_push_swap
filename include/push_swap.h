@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 11:00:24 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 15:18:42 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,14 @@ void	sort_big(t_stack *a, t_stack *b);
 
 /* ---------------	SORTING BIG UTILS	--------------- */
 int		*get_costs(t_stack *a, t_stack *b);
-int		moves_top(t_stack *a, t_stack *b);
+void	moves_top(t_stack *a, t_stack *b);
+void	move_top_one(t_stack *stack, char pile);
 
 /* ---------------	POSITION UTILS	--------------- */
 int		get_pos_b(t_stack *b, int value);
 t_bool	is_same_pos(int pos_a, int pos_b, int size_a, int size_b);
 t_bool	is_at_begin(int pos, int size);
-
+void	change_pos(t_stack *stack, int instruction);
 
 /* ---------------	INSTRUCTIONS	--------------- */
 void	push(t_stack *src, t_stack *dest, char *instruction);

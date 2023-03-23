@@ -43,8 +43,14 @@ test5:		$(NAME)
 			@echo -n "Instructions: "
 			@./push_swap $(ARG) | wc -l
 
+test50:		$(NAME)
+			$(eval ARG = $(shell jot -r 9 0 100000))
+			./push_swap $(ARG) | ./checker_Mac $(ARG)
+			@echo -n "Instructions: "
+			@./push_swap $(ARG) | wc -l
+
 test100:	$(NAME)
-			$(eval ARG = $(shell jot -r 100 -100000 100000))
+			$(eval ARG = $(shell jot -r 100 0 499))
 			./push_swap $(ARG) | ./checker_Mac $(ARG)
 			@echo -n "Instructions: "
 			@./push_swap $(ARG) | wc -l

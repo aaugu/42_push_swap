@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:17:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 10:26:32 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 13:28:47 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	get_max(int *list, int size)
 	}
 	return (max);
 }
-
 
 int	get_first_min(int *list, int size)
 {

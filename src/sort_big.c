@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:59:28 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 13:02:38 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 15:50:29 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,26 @@ void	sort_big(t_stack *a, t_stack *b)
 	push(a, b, "pb");
 	if (!sort_a(a, b))
 		error_exit("Error\n");
-	// if (a->stack[1] == b->stack[0] + 1 && a->stack[0] < a->stack[2])
-	// 	swap(a, "sa");
-	// else if (!(a->stack[0] == b->stack[0] + 1 && a->stack[1] < a->stack[2]))
-	// 	sort_three(a);
-	// empty_b(a, b);
-	// while (ft_is_sort(a->stack, a->size) == FALSE)
-	// 	reverse_rotate(a, "rra");
+	sort_three(a);
+	empty_b(a, b);
+	while (ft_is_sort(a->stack, a->size) == FALSE)
+		reverse_rotate(a, "rra");
 }
 
 int	sort_a(t_stack *a, t_stack *b)
 {
 	int	*costs;
 
-	b->min = get_min(b->stack, b->size);
-	b->max = get_max(b->stack, b->size);
 	while (a->size > 3)
 	{
+		b->min = get_min(b->stack, b->size);
+		b->max = get_max(b->stack, b->size);
 		costs = get_costs(a, b);
 		if (!costs)
 			return (0);
 		a->pos = get_first_min(costs, a->size);
 		b->pos = get_pos_b(b, a->stack[a->pos]);
-		if (!moves_top(a, b))
-			return (0);
+		moves_top(a, b);
 		push(a, b, "pb");
 		free(costs);
 	}
@@ -55,8 +51,16 @@ void	empty_b(t_stack *a, t_stack *b)
 {
 	while (b->size != 0)
 	{
-		if (b->stack[0] > a->stack[0])
-			push(b, a, "pb");
+		a->max = get_max(a->stack, a->size);
+		if (a->stack[0] == b->stack[0] + 1)
+			push(b, a, "pa");
+		else if (b->stack[0] > a->max)
+		{
+			a->pos = get_min(a->stack, a->size);
+			while (a->stack[0] != a->min)
+				move_top_one(a, 'a');
+			push(b, a, "pa");
+		}
 		else
 			reverse_rotate(a, "rra");
 	}

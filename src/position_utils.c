@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 23:43:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 13:02:19 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/23 15:17:55 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,26 @@ t_bool	is_same_pos(int pos_a, int pos_b, int size_a, int size_b)
 
 t_bool	is_at_begin(int pos, int size)
 {
-	if ((pos <= (size - 1) / 2))
+	if ((pos <= (size - 1) / 2) || pos == 1)
 		return (1);
 	return (0);
+}
+
+// 0 stands for rotate and 1 for reverse_rotate
+void	change_pos(t_stack *stack, int instruction)
+{
+	if (instruction == 0)
+	{
+		if (stack->pos == stack->size - 1)
+			stack->pos = 0;
+		else
+			stack->pos--;
+	}
+	else
+	{
+		if (stack->pos == stack->size - 1)
+			stack->pos = 0;
+		else
+			stack->pos++;
+	}
 }
