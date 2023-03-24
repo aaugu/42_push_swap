@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 23:43:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 23:01:11 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/24 13:21:57 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ placed just above number - 1 in B. Else just put it on B.
 int	get_pos_b(t_stack *b, int nb_a)
 {
 	int	i;
+	int	target;
 
 	i = 0;
 	if (nb_a > b->max || nb_a < b->min)
@@ -33,13 +34,19 @@ int	get_pos_b(t_stack *b, int nb_a)
 			i++;
 		}
 	}
-	else if (nb_a > b->min && nb_a < b->max)
+	else
 	{
-		while (i < b->size)
+		target = nb_a - 1;
+		while (target != b->min)
 		{
-			if (b->stack[i] == nb_a - 1)
-				return (i);
-			i++;
+			i = 0;
+			while (i < b->size)
+			{
+				if (b->stack[i] == target)
+					return (i);
+				i++;
+			}
+			target--;
 		}
 	}
 	return (0);

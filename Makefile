@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = gcc
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -Werror
 
 INCLUDE = -I include -I libft
 LIB = -Llibft -lft

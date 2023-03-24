@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 11:49:38 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 20:05:59 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/24 12:13:57 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	push(t_stack *src, t_stack *dest, char *instruction)
 	int	i;
 
 	temp = src->stack[0];
-	if (!src->size)
-		ft_printf("beeeeeeeuh");
 	src->size--;
 	i = 0;
 	while (i < src->size)

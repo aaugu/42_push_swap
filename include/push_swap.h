@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 21:54:56 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/24 12:00:56 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_stack
 	int	*stack;
 	int	size;
 	int	pos;
+	int	move;
 	int	min;
 	int	max;
 }		t_stack;
@@ -56,6 +57,7 @@ void	sort_big(t_stack *a, t_stack *b);
 
 /* ---------------	SORTING BIG UTILS	--------------- */
 int		*get_costs(t_stack *a, t_stack *b);
+int		cost_move_top(t_stack *stack, int pos);
 
 /* ---------------	MOVES UTILS	--------------- */
 void	move_pos_top(t_stack *a, t_stack *b);

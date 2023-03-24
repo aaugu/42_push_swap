@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:59:28 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/24 00:34:49 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/24 13:08:18 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,13 @@ int	sort_a(t_stack *a, t_stack *b)
 			return (0);
 		a->pos = get_first_min(costs, a->size);
 		b->pos = get_pos_b(b, a->stack[a->pos]);
+		a->move = cost_move_top(a, a->pos);
+		b->move = cost_move_top(b, b->pos);
+		ft_printf(" / pos_a %d / pos_b %d / move_a %d / move_b %d / min_b %d / max_b %d\n", a->pos, b->pos, a->move, b->move, b->min, b->max);
 		move_pos_top(a, b);
 		push(a, b, "pb");
+		print_stack(a, " / ");
+		print_stack(b, "\n\n");
 		free(costs);
 	}
 	return (1);

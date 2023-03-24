@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:12:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/24 00:32:41 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/24 12:01:40 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	cost_move_top(t_stack *stack, int pos);
 int	final_cost(int cost_a, int cost_b);
+int	absolute_value(int nb);
 
 int	*get_costs(t_stack *a, t_stack *b)
 {
@@ -39,7 +40,6 @@ int	*get_costs(t_stack *a, t_stack *b)
 
 int	cost_move_top(t_stack *stack, int pos)
 {
-
 	if (is_at_begin(pos, stack->size) == TRUE)
 		return (pos);
 	else
@@ -48,5 +48,24 @@ int	cost_move_top(t_stack *stack, int pos)
 
 int	final_cost(int cost_a, int cost_b)
 {
+	if ((cost_a < 0 && cost_b < 0) || (cost_a > 0 && cost_b > 0))
+	{
+		if (cost_a > cost_b)
+			return (absolute_value(cost_a));
+		else
+			return (absolute_value(cost_b));
+	}
+	else if ((cost_a <= 0 && cost_b >= 0) || (cost_a >= 0 && cost_b <= 0))
+	{
+		return (absolute_value(cost_a) + absolute_value(cost_b));
+	}
+	else
+		return (0);
+}
 
+int	absolute_value(int nb)
+{
+	if (nb < 0)
+		return (-nb);
+	return (nb);
 }
