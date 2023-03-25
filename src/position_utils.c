@@ -6,86 +6,63 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 23:43:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/24 13:21:57 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/25 01:32:04 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*
-Get position of which number in B should be placed on top of B in order to
-push number from A to B :
-If the number you push is going to be the new max or new min, it should be
-placed just above the old max. Else, if number - 1 exists in B, it should be
-placed just above number - 1 in B. Else just put it on B.
-*/
+int get_target_pos_b(t_stack *b, int nb_a);
+
 int	get_pos_b(t_stack *b, int nb_a)
 {
-	int	i;
+	b->min = get_min(b->stack, b->size);
+	b->max = get_max(b->stack, b->size);
+	if (nb_a > b->max || nb_a < b->min)
+		return (get_value_pos(b, b->max));
+	else
+		return (get_target_pos_b(b, nb_a));
+	return (0);
+}
+
+int get_target_pos_b(t_stack *b, int nb_a)
+{
 	int	target;
 
+	target = nb_a;
+	while (target != b->min)
+	{
+		target--;
+		if (get_value_pos(b, target) != -1)
+			return (get_value_pos(b, target));
+	}
+	return (0);
+}
+
+int get_target_pos_a(t_stack *a, int nb_b)
+{
+	int target;
+
+	target = nb_b;
+	while (target != a->max)
+	{
+		target++;
+		if (get_value_pos(a, target) != -1)
+			return (get_value_pos(a, target));
+	}
+	return (0);
+}
+
+int	get_value_pos(t_stack *stack, int value)
+{
+	int i;
+
 	i = 0;
-	if (nb_a > b->max || nb_a < b->min)
+	while (i < stack->size)
 	{
-		while (i < b->size)
-		{
-			if (b->stack[i] == b->max)
-				return (i);
-			i++;
-		}
+		if (stack->stack[i] == value)
+			return (i);
+		i++;
 	}
-	else
-	{
-		target = nb_a - 1;
-		while (target != b->min)
-		{
-			i = 0;
-			while (i < b->size)
-			{
-				if (b->stack[i] == target)
-					return (i);
-				i++;
-			}
-			target--;
-		}
-	}
-	return (0);
-}
-
-t_bool	is_same_pos(int pos_a, int pos_b, int size_a, int size_b)
-{
-	if ((pos_a == 0 && pos_b == 0) || (pos_a == 1 && pos_b == 1))
-		return (1);
-	else if (is_at_begin(pos_a, size_a) && is_at_begin(pos_b, size_b) \
-		&& pos_a == pos_b)
-		return (1);
-	else if (!is_at_begin(pos_a, size_a) && !is_at_begin(pos_b, size_b) \
-		&& (size_a - pos_a == size_b - pos_b))
-		return (1);
-	return (0);
-}
-
-t_bool	is_at_begin(int pos, int size)
-{
-	if ((pos <= size / 2))
-		return (1);
-	return (0);
-}
-
-void	change_pos(t_stack *stack, char *instruction)
-{
-	if (ft_strcmp(instruction, "r"))
-	{
-		if (stack->pos == 0)
-			stack->pos = stack->size - 1;
-		else
-			stack->pos--;
-	}
-	else if (ft_strcmp (instruction, "rr"))
-	{
-		if (stack->pos == stack->size - 1)
-			stack->pos = 0;
-		else
-			stack->pos++;
-	}
+	return (-1);
 }

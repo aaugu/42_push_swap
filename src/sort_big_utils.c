@@ -6,15 +6,15 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:12:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/24 12:01:40 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/25 01:37:45 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	cost_move_top(t_stack *stack, int pos);
-int	final_cost(int cost_a, int cost_b);
-int	absolute_value(int nb);
+t_bool	is_at_begin(int pos, int size);
+int		final_cost(int cost_a, int cost_b);
+int		absolute_value(int nb);
 
 int	*get_costs(t_stack *a, t_stack *b)
 {
@@ -51,9 +51,9 @@ int	final_cost(int cost_a, int cost_b)
 	if ((cost_a < 0 && cost_b < 0) || (cost_a > 0 && cost_b > 0))
 	{
 		if (cost_a > cost_b)
-			return (absolute_value(cost_a));
+			return (absolute_value(cost_a) - absolute_value(cost_b));
 		else
-			return (absolute_value(cost_b));
+			return (absolute_value(cost_b) - absolute_value(cost_a));
 	}
 	else if ((cost_a <= 0 && cost_b >= 0) || (cost_a >= 0 && cost_b <= 0))
 	{
@@ -68,4 +68,11 @@ int	absolute_value(int nb)
 	if (nb < 0)
 		return (-nb);
 	return (nb);
+}
+
+t_bool is_at_begin(int pos, int size)
+{
+	if ((pos <= size / 2))
+		return (1);
+	return (0);
 }

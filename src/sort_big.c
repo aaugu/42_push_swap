@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:59:28 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/24 13:08:18 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/25 01:39:57 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	sort_big(t_stack *a, t_stack *b)
 	sort_a(a, b);
 	// sort_three(a);
 	// empty_b(a, b);
-	// print_stack(a, NULL);
-	// print_stack(b, NULL);
 	// while (ft_is_sort(a->stack, a->size) == FALSE)
 	// 	reverse_rotate(a, "rra");
 }
@@ -48,29 +46,18 @@ void	sort_big(t_stack *a, t_stack *b)
 int	sort_a(t_stack *a, t_stack *b)
 {
 	int	*costs;
-	int	i;
 
 	while (a->size > 3)
 	{
-		b->min = get_min(b->stack, b->size);
-		b->max = get_max(b->stack, b->size);
 		costs = get_costs(a, b);
-		i = 0;
-		while (i < a->size)
-		{
-			ft_printf("%d ", costs[i++]);
-		}
 		if (!costs)
 			return (0);
 		a->pos = get_first_min(costs, a->size);
 		b->pos = get_pos_b(b, a->stack[a->pos]);
 		a->move = cost_move_top(a, a->pos);
 		b->move = cost_move_top(b, b->pos);
-		ft_printf(" / pos_a %d / pos_b %d / move_a %d / move_b %d / min_b %d / max_b %d\n", a->pos, b->pos, a->move, b->move, b->min, b->max);
 		move_pos_top(a, b);
 		push(a, b, "pb");
-		print_stack(a, " / ");
-		print_stack(b, "\n\n");
 		free(costs);
 	}
 	return (1);
@@ -80,20 +67,25 @@ void	empty_b(t_stack *a, t_stack *b)
 {
 	while (b->size != 0)
 	{
-		print_stack(a, " / ");
-		print_stack(b, " / ");
 		a->max = get_max(a->stack, a->size);
-		if (b->stack[0] > a->max)
+		a->min = get_min(a->stack, a->size);
+		if (b->stack[0] < a->min || b->stack[0] > a->max)
 		{
-			a->pos = get_min(a->stack, a->size);
-			PRINT_INT(a->pos);
-			while (a->stack[0] != a->stack[a->pos])
+			a->pos = get_value_pos(a, a->min);
+			a->move = cost_move_top(a, a->pos);
+			while (a->move != 0)
 				move_top_one(a, 'a');
 			push(b, a, "pa");
 		}
-		else if (a->stack[0] == b->stack[0] + 1)
+		else if (a->stack[0] - 1 == b->stack[0])
 			push(b, a, "pa");
 		else
-			reverse_rotate(a, "rra");
+		{
+			a->pos = get_target_pos_a(a, b->stack[0]);
+			a->move = cost_move_top(a, a->pos);
+			while (a->move != 0)
+				move_top_one(a, 'a');
+			push(b, a, "pa");
+		}
 	}
 }

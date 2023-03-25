@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:55:18 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/24 11:56:22 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/25 01:41:29 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	move_pos_top(t_stack *a, t_stack *b)
 	if ((a->move < 0 && b->move < 0) || (a->move > 0 && b->move > 0))
 	{
 		while (a->move != 0 || b->move != 0)
+		{
 			move_top_both(a, b);
+			// break ;
+		}
 	}
 	while (a->move != 0)
 		move_top_one(a, 'a');

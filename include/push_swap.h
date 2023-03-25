@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/24 12:00:56 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/25 01:09:36 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,8 @@ void	move_top_one(t_stack *stack, char pile);
 
 /* ---------------	POSITION UTILS	--------------- */
 int		get_pos_b(t_stack *b, int value);
-t_bool	is_same_pos(int pos_a, int pos_b, int size_a, int size_b);
-t_bool	is_at_begin(int pos, int size);
-void	change_pos(t_stack *stack, char *instruction);
+int		get_value_pos(t_stack *stack, int value);
+int		get_target_pos_a(t_stack *a, int nb_b);
 
 /* ---------------	INSTRUCTIONS	--------------- */
 void	push(t_stack *src, t_stack *dest, char *instruction);
