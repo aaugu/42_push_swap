@@ -6,56 +6,39 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 23:43:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/25 01:32:04 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 14:42:49 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int get_target_pos_b(t_stack *b, int nb_a);
+int	get_target_pos_a(t_stack *a, int nb_b);
+int	get_value_pos(t_stack *stack, int value);
 
-int	get_pos_b(t_stack *b, int nb_a)
+int	get_pos_a(t_stack *a, int nb_b, int b_max)
 {
-	b->min = get_min(b->stack, b->size);
-	b->max = get_max(b->stack, b->size);
-	if (nb_a > b->max || nb_a < b->min)
-		return (get_value_pos(b, b->max));
+	a->min = get_min(a->stack, a->size);
+	if (nb_b > b_max)
+		return (get_value_pos(a, a->min));
 	else
-		return (get_target_pos_b(b, nb_a));
+		return (get_target_pos_a(a, nb_b));
 	return (0);
 }
 
-int get_target_pos_b(t_stack *b, int nb_a)
+int	get_target_pos_a(t_stack *a, int nb_b)
 {
-	int	target;
-
-	target = nb_a;
-	while (target != b->min)
+	while (nb_b != a->max)
 	{
-		target--;
-		if (get_value_pos(b, target) != -1)
-			return (get_value_pos(b, target));
-	}
-	return (0);
-}
-
-int get_target_pos_a(t_stack *a, int nb_b)
-{
-	int target;
-
-	target = nb_b;
-	while (target != a->max)
-	{
-		target++;
-		if (get_value_pos(a, target) != -1)
-			return (get_value_pos(a, target));
+		nb_b++;
+		if (get_value_pos(a, nb_b) != -1)
+			return (get_value_pos(a, nb_b));
 	}
 	return (0);
 }
 
 int	get_value_pos(t_stack *stack, int value)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < stack->size)

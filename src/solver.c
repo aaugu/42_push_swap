@@ -6,20 +6,29 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 11:17:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 13:28:47 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 15:18:23 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	solve(t_stack *a, t_stack *b)
+void	solve(t_game *game)
 {
-	if (a->size >= 2 && a->size <= 3)
-		sort_three(a);
-	else if (a->size > 3 && a->size <= 5)
-		sort_small(a, b);
+	if (game->a.size >= 2 && game->a.size <= 3)
+		sort_three(&game->a);
 	else
-		sort_big(a, b);
+		sort_big(&game->a, &game->b, game->median);
+}
+
+void	sort_three(t_stack *a)
+{
+	while (ft_is_sort(a->stack, a->size) == FALSE)
+	{
+		if (a->stack[0] > a->stack[1])
+			swap(a->stack, "sa");
+		else
+			reverse_rotate(a, "rra");
+	}
 }
 
 int	get_min(int *list, int size)

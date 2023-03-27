@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 12:03:34 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/22 18:20:43 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 15:35:41 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include <unistd.h>
 
 typedef int	t_bool;
-# ifndef BUFFER_SIZE
-#  define TRUE 1
-#  define FALSE 0
-# endif
+
+# define TRUE 1
+# define FALSE 0
+# define ERROR -1
 
 /* ---------------	LISTS	--------------- */
 typedef struct s_list

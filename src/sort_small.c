@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:59:25 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/23 10:30:12 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/27 15:18:18 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,6 @@ void	sort_small_a(t_stack *a, t_stack *b)
 			a->max = get_max(a->stack, a->size);
 		}
 		else if (a->stack[0] > a->stack[1])
-			swap(a->stack, "sa");
-		else
-			reverse_rotate(a, "rra");
-	}
-}
-
-void	sort_three(t_stack *a)
-{
-	while (ft_is_sort(a->stack, a->size) == FALSE)
-	{
-		if (a->stack[0] > a->stack[1])
 			swap(a->stack, "sa");
 		else
 			reverse_rotate(a, "rra");
