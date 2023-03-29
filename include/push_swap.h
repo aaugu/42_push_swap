@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 14:19:19 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 12:36:07 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	move_pos_top(t_stack *a, t_stack *b);
 void	move_top_one(t_stack *stack, char pile);
 
 /* ---------------	POSITION UTILS	--------------- */
-int		get_pos_a(t_stack *a, int nb_b, int b_max);
+int		get_pos_a(t_stack *a, t_stack *b, int i);
 int		get_value_pos(t_stack *stack, int value);
 int		get_target_pos_a(t_stack *a, int nb_b);
 

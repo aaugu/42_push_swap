@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 23:43:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 14:42:49 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 14:12:01 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,31 @@
 int	get_target_pos_a(t_stack *a, int nb_b);
 int	get_value_pos(t_stack *stack, int value);
 
-int	get_pos_a(t_stack *a, int nb_b, int b_max)
+int get_pos_a(t_stack *a, t_stack *b, int i)
 {
-	a->min = get_min(a->stack, a->size);
-	if (nb_b > b_max)
-		return (get_value_pos(a, a->min));
+	int	pos_a;
+	if (b->stack[i] > a->max)
+	{
+		pos_a = get_value_pos(a, a->min);
+		return (pos_a);
+	}
 	else
-		return (get_target_pos_a(a, nb_b));
+	{
+		pos_a = get_target_pos_a(a, b->stack[i]);
+		return (pos_a);
+	}
 	return (0);
 }
 
 int	get_target_pos_a(t_stack *a, int nb_b)
 {
+	int	nb_a;
 	while (nb_b != a->max)
 	{
 		nb_b++;
-		if (get_value_pos(a, nb_b) != -1)
-			return (get_value_pos(a, nb_b));
+		nb_a = get_value_pos(a, nb_b);
+		if (nb_a != -1)
+			return (nb_a);
 	}
 	return (0);
 }

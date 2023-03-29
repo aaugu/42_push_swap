@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:59:28 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 15:47:31 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 14:22:48 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	sort_big(t_stack *a, t_stack *b, int median)
 {
 	fill_b_to_median(a, b, median);
 	while (a->size > 3)
+	{
 		push(a, b, "pb");
+	}
 	sort_three(a);
 	sort_b_in_a(a, b);
-	print_stack(a, " / ");
-	print_stack(b, NULL);
-	// final_sort(a);
+	final_sort(a);
 }
 
 void	fill_b_to_median(t_stack *a, t_stack *b, int median)
@@ -46,12 +46,14 @@ int	sort_b_in_a(t_stack *a, t_stack *b)
 
 	while (b->size != 0)
 	{
+		a->min = get_min(a->stack, a->size);
+		a->max = get_max(a->stack, a->size);
 		b->max = get_max(b->stack, b->size);
 		costs = get_costs(a, b);
 		if (!costs)
 			return (0);
 		b->pos = get_first_min(costs, b->size);
-		a->pos = get_pos_a(a, b->stack[b->pos], b->max);
+		a->pos = get_pos_a(a, b, b->pos);
 		a->move = cost_move_top(a, a->pos);
 		b->move = cost_move_top(b, b->pos);
 		move_pos_top(a, b);

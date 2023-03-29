@@ -15,7 +15,7 @@ SRCS_FILES = 	main.c \
 				solver.c \
 				sort_small.c \
 				sort_big.c \
-				sort_big_utils.c \
+				cost_utils.c \
 				position_utils.c \
 				moves_utils.c \
 				instructions.c \
@@ -37,18 +37,6 @@ $(LIBFT):
 			@echo " [ .. ] | Compiling libft.."
 			@make -s -C libft
 			@echo " [ OK ] | Libft ready!"
-
-test5:		$(NAME)
-			$(eval ARG = $(shell jot -r 5 -50 49))
-			./push_swap $(ARG) | ./checker_Mac $(ARG)
-			@echo -n "Instructions: "
-			@./push_swap $(ARG) | wc -l
-
-test50:		$(NAME)
-			$(eval ARG = $(shell jot -r 9 0 100000))
-			./push_swap $(ARG) | ./checker_Mac $(ARG)
-			@echo -n "Instructions: "
-			@./push_swap $(ARG) | wc -l
 
 clean:
 			@echo " [ .. ] | Cleaning objects.."

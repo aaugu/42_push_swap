@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:12:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 15:50:41 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 14:01:50 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	*get_costs(t_stack *a, t_stack *b)
 	while (i < b->size)
 	{
 		cost_b = cost_move_top(b, i);
-		a->pos = get_pos_a(a, b->stack[i], b->max);
+		a->pos = get_pos_a(a, b, i);
 		cost_a = cost_move_top(a, a->pos);
 		costs[i] = final_cost(cost_a, cost_b);
 		i++;
@@ -41,9 +41,13 @@ int	*get_costs(t_stack *a, t_stack *b)
 int	cost_move_top(t_stack *stack, int pos)
 {
 	if (is_at_begin(pos, stack->size) == TRUE)
+	{
 		return (pos);
+	}
 	else
+	{
 		return (pos - stack->size);
+	}
 }
 
 int	final_cost(int cost_a, int cost_b)

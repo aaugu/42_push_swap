@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:08:55 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 14:18:27 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 14:25:32 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(int argc, char **argv)
 
 	game.a.stack = NULL;
 	game.b.stack = NULL;
+	if (argc == 1)
+		return (0);
 	game.list = get_input(argv, argc);
 	if (!game.list)
 		clear_error_exit(&game, "Error\n");
