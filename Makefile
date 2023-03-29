@@ -13,11 +13,10 @@ SRCS_FILES = 	main.c \
 				checks.c \
 				init_stacks.c \
 				solver.c \
-				sort_small.c \
 				sort_big.c \
-				cost_utils.c \
-				position_utils.c \
-				moves_utils.c \
+				solver_cost_utils.c \
+				solver_position_utils.c \
+				solver_moves_utils.c \
 				instructions.c \
 
 SRCS = $(addprefix ./src/, $(SRCS_FILES))

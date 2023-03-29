@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   position_utils.c                                   :+:      :+:    :+:   */
+/*   solver_position_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 23:43:14 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 14:12:01 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/29 20:32:07 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 int	get_target_pos_a(t_stack *a, int nb_b);
 int	get_value_pos(t_stack *stack, int value);
 
-int get_pos_a(t_stack *a, t_stack *b, int i)
+int	get_pos_a(t_stack *a, t_stack *b, int i)
 {
 	int	pos_a;
+
 	if (b->stack[i] > a->max)
 	{
 		pos_a = get_value_pos(a, a->min);
@@ -34,6 +35,7 @@ int get_pos_a(t_stack *a, t_stack *b, int i)
 int	get_target_pos_a(t_stack *a, int nb_b)
 {
 	int	nb_a;
+
 	while (nb_b != a->max)
 	{
 		nb_b++;
