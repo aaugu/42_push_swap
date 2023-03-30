@@ -6,7 +6,7 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:46:06 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 12:36:07 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 11:14:22 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ typedef struct s_game
 	int		size;
 	int		median;
 }			t_game;
-
-# define PRINT_INT(x) ft_printf("%d\n", x);
-
-void	print_stack(t_stack *stack, char *suffix);
 
 /* ---------------	PARSE INPUT	--------------- */
 char	**get_input(char **argv, int argc);
@@ -79,5 +75,7 @@ void	push(t_stack *src, t_stack *dest, char *instruction);
 void	swap(int *stack, char *instruction);
 void	rotate(t_stack *stack, char *instruction);
 void	reverse_rotate(t_stack *stack, char *instruction);
+
+void	clear_error_exit(t_game *game, char *error);
 
 #endif

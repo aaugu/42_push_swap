@@ -6,15 +6,14 @@
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:58:23 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/27 15:42:05 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 11:20:45 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 int		*create_stack(char **list, int size);
-void	convert_int_and_get_med(char **list, t_stack *a);
-int		get_median(char **list, t_stack a);
+int		get_median(t_game *game);
 
 int	init_stacks(t_game *game)
 {
@@ -29,10 +28,7 @@ int	init_stacks(t_game *game)
 		free(game->a.stack);
 		return (0);
 	}
-	game->median = get_median(game->list, game->a);
-	if (game->median == ERROR)
-		return (0);
-	convert_int_and_get_med(game->list, &game->a);
+	game->median = get_median(game);
 	return (1);
 }
 
@@ -53,53 +49,15 @@ int	*create_stack(char **list, int size)
 	return (stack);
 }
 
-void	convert_int_and_get_med(char **list, t_stack *a)
-{
-	int	*copy;
-	int	i;
-	int	j;
-
-	copy = create_stack(list, a->size);
-	ft_sort(copy, a->size);
-	i = 0;
-	while (i < a->size)
-	{
-		j = 0;
-		while (j < a->size)
-		{
-			if (a->stack[i] == copy[j])
-			{
-				a->stack[i] = j;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
-	free(copy);
-}
-
-int	get_median(char **list, t_stack a)
+int	get_median(t_game *game)
 {
 	int	*copy;
 	int	median;
-	int	i;
 
-	copy = create_stack(list, a.size);
+	copy = create_stack(game->list, game->a.size);
 	if (!copy)
-		return (-1);
-	ft_sort(copy, a.size);
-	median = ft_median(copy, a.size);
-	i = 0;
-	while (i < a.size)
-	{
-		if (copy[i] == median)
-		{
-			return (i);
-			free(copy);
-		}
-		i++;
-	}
+		clear_error_exit(game, "Error\nSomething went wrong.");
+	median = ft_median(copy, game->a.size);
 	free(copy);
-	return (-1);
+	return (median);
 }

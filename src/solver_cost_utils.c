@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_big_utils.c                                   :+:      :+:    :+:   */
+/*   solver_cost_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugu <aaugu@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:12:59 by aaugu             #+#    #+#             */
-/*   Updated: 2023/03/29 14:01:50 by aaugu            ###   ########.fr       */
+/*   Updated: 2023/03/30 10:42:42 by aaugu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	*get_costs(t_stack *a, t_stack *b)
 		cost_b = cost_move_top(b, i);
 		a->pos = get_pos_a(a, b, i);
 		cost_a = cost_move_top(a, a->pos);
-		costs[i] = final_cost(cost_a, cost_b);
+		costs[i] = absolute_value(cost_a) + absolute_value(cost_b);
 		i++;
 	}
 	return (costs);
@@ -48,25 +48,6 @@ int	cost_move_top(t_stack *stack, int pos)
 	{
 		return (pos - stack->size);
 	}
-}
-
-int	final_cost(int cost_a, int cost_b)
-{
-	if (cost_a == cost_b)
-		return (absolute_value(cost_a));
-	else if ((cost_a < 0 && cost_b < 0) || (cost_a > 0 && cost_b > 0))
-	{
-		if (cost_a < cost_b && (cost_a < 0 && cost_b < 0))
-			return (absolute_value(cost_b));
-		else
-			return (absolute_value(cost_b));
-	}
-	else if ((cost_a <= 0 && cost_b >= 0) || (cost_a >= 0 && cost_b <= 0))
-	{
-		return (absolute_value(cost_a) + absolute_value(cost_b));
-	}
-	else
-		return (0);
 }
 
 int	absolute_value(int nb)
